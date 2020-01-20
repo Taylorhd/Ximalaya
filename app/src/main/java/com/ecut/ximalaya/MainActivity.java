@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.ecut.ximalaya.utils.LogUtil;
 import com.ximalaya.ting.android.opensdk.constants.DTransferConstants;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
                 if (categories != null){
                     int size = categories.size();
                     for (Category category :categories ){
-                        Log.d(TAG, "onSuccess: "+ category.getCategoryName());
+//                        Log.d(TAG, "onSuccess: "+ category.getCategoryName());
+                        LogUtil.d(TAG,category.getCategoryName());
                     }
                 }
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(int i, String s) {
                 Log.d(TAG, "onError: "+ i +"error :"+s);
+                LogUtil.d(TAG,i +"error :"+s);
 
             }
         });
