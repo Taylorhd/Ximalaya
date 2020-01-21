@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         // 创建内容适配器
         FragmentManager fm = getSupportFragmentManager();
 
-        MainContentAdapter mainContentAdapter = new MainContentAdapter(fm,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+//        MainContentAdapter mainContentAdapter = new MainContentAdapter(fm,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        MainContentAdapter mainContentAdapter = new MainContentAdapter(fm);
         contentPager.setAdapter(mainContentAdapter);
         // 将 view pager和indicator绑定到一起
         magicIndicator.setNavigator(commonNavigator);

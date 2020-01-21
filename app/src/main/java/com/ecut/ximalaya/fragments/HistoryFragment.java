@@ -2,15 +2,16 @@ package com.ecut.ximalaya.fragments;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.ecut.ximalaya.R;
+import com.ecut.ximalaya.base.BaseFragment;
 
 public class HistoryFragment extends BaseFragment {
 
     @Override
-    protected View onSubViewLoad(LayoutInflater layoutInflater) {
-        View  rootView = layoutInflater.inflate(R.layout.fragment_history,null);
-
+    protected View onSubViewLoaded(LayoutInflater layoutInflater, ViewGroup container) {
+        View  rootView = layoutInflater.inflate(R.layout.fragment_history,container,false);
         return rootView;
     }
 }

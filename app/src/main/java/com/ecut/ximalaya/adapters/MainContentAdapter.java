@@ -5,21 +5,26 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.ecut.ximalaya.utils.FragmentCreator;
+
 public class MainContentAdapter extends FragmentPagerAdapter {
-
-
-    public MainContentAdapter(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
+    public MainContentAdapter(@NonNull FragmentManager fm) {
+        super(fm);
     }
+
+
+//    public MainContentAdapter(@NonNull FragmentManager fm, int behavior) {
+//        super(fm, behavior);
+//    }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return null;
+        return FragmentCreator.getFragment(position);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return FragmentCreator.PAGE_COUNT;
     }
 }
