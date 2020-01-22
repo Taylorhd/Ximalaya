@@ -19,19 +19,12 @@ import com.ecut.ximalaya.adapters.MainContentAdapter;
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends FragmentActivity {
     private static final String TAG = "MainActivity";
 
+    private IndicatorAdapter mIndicatorAdapter;
+    private ViewPager contentPager;
 
 
     @Override
@@ -39,6 +32,19 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        initEvent();
+    }
+
+    private void initEvent() {
+        mIndicatorAdapter.setOnIndicatorTapClickListener(new IndicatorAdapter.OnIndicatorTapClickListener() {
+            @Override
+            public void onTabClick(int index) {
+                if (contentPager!=null){
+                contentPager.setCurrentItem(index);
+                }
+            }
+        });
+
     }
 
     private void initView() {
@@ -46,14 +52,14 @@ public class MainActivity extends FragmentActivity {
 //        magicIndicator.setBackgroundColor(Color.BLACK);
         magicIndicator.setBackgroundColor(ContextCompat.getColor(this.getApplicationContext(),R.color.mainColor));
         //创建indicator 的适配器
-        IndicatorAdapter adapter = new IndicatorAdapter(this);
+        mIndicatorAdapter = new IndicatorAdapter(this);
         CommonNavigator commonNavigator = new CommonNavigator(this);
-        commonNavigator.setAdapter(adapter);
+        commonNavigator.setAdapter(mIndicatorAdapter);
         // 设置要显示的内容
 
 
         // View Pager
-        ViewPager contentPager = findViewById(R.id.content_pager);
+        contentPager = findViewById(R.id.content_pager);
         // 创建内容适配器
         FragmentManager fm = getSupportFragmentManager();
         MainContentAdapter mainContentAdapter = new MainContentAdapter(fm);
