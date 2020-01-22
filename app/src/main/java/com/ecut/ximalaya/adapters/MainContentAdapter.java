@@ -9,8 +9,11 @@ import com.ecut.ximalaya.utils.FragmentCreator;
 
 public class MainContentAdapter extends FragmentPagerAdapter {
     public MainContentAdapter(@NonNull FragmentManager fm) {
-        super(fm);
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
+//    public MainContentAdapter(@NonNull FragmentManager fm) {
+//        super(fm);
+//    }
 
 
 //    public MainContentAdapter(@NonNull FragmentManager fm, int behavior) {

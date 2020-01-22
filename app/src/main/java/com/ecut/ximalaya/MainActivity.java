@@ -2,8 +2,10 @@ package com.ecut.ximalaya;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -27,7 +29,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.Simple
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
     private static final String TAG = "MainActivity";
 
 
@@ -54,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
         ViewPager contentPager = findViewById(R.id.content_pager);
         // 创建内容适配器
         FragmentManager fm = getSupportFragmentManager();
-
-//        MainContentAdapter mainContentAdapter = new MainContentAdapter(fm,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         MainContentAdapter mainContentAdapter = new MainContentAdapter(fm);
         contentPager.setAdapter(mainContentAdapter);
         // 将 view pager和indicator绑定到一起
